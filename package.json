@@ -1,0 +1,45 @@
+{
+  "name": "bulma-plot-container",
+  "version": "0.1.0",
+  "description": "Web component for displaying plots with extra information",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack/webpack.config.development.js",
+    "build": "webpack --config webpack/webpack.config.production.js",
+    "build:dev": "webpack --config webpack/webpack.config.development.js",
+    "test": "npm run build & jest",
+    "lint": "eslint src/ webpack/",
+    "lint:fix": "eslint --fix src/ webpack/",
+    "docs": "mkdocs build"
+  },
+  "author": "SALT Astronomy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saltastro/bulma-plot-container"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.6.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.24.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "express": "^4.16.3",
+    "jest": "^23.6.0",
+    "jest-puppeteer": "^3.4.0",
+    "mini-html-webpack-plugin": "^0.2.3",
+    "puppeteer": "^1.9.0",
+    "regenerator-runtime": "^0.12.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
+  }
+}

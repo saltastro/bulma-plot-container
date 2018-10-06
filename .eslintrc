@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "standard",
+    "plugin:jest/recommended"
+  ],
+  "plugins": [
+    "jest"
+  ],
+  "globals": {
+    "customElements": true,
+    "HTMLElement": true,
+    "browser": true,
+    "context": true,
+    "page": true
+  },
+  "rules": {
+    "space-before-function-paren": 0
+  }
+}
+
