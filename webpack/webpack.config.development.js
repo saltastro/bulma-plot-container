@@ -5,8 +5,7 @@ const {
   generateJSReferences
 } = MiniHtmlWebpackPlugin
 
-const html = ({ css, js, publicPath }) =>
-        `<!DOCTYPE html>
+const html = ({ css, js, publicPath }) => `<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -14,7 +13,10 @@ ${generateCSSReferences(css, publicPath)}
 ${generateJSReferences(js, publicPath)}
 </head>
 <body>
-<plot-container></plot-container>
+<plot-info>
+<p>Hello</p>
+<p>World!</p>
+</plot-info>
 </body>
 </html>`
 
