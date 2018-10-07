@@ -22,6 +22,9 @@ class PlotInfo extends HTMLElement {
 
   connectedCallback() {
     this.classList.add('is-invisible')
+    this.style.position = 'fixed'
+    this.style.top = '0'
+    this.style.left = '0'
   }
 }
 
