@@ -36,6 +36,10 @@ class PlotInfo extends HTMLElement {
     this.shadowRoot.querySelector('.info').classList.add('is-invisible')
   }
 
+  get visible() {
+    return !this.shadowRoot.querySelector('.info').classList.contains('is-invisible')
+  }
+
   move(x, y) {
     const info = this.shadowRoot.querySelector('.info')
     info.style.left = `${x}px`

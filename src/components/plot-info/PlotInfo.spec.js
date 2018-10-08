@@ -61,6 +61,22 @@ describe('PlotInfo', () => {
     })
   })
 
+  describe('visible', () => {
+    it('should return true if the info is visible', async () => {
+      // ensure the plot info is visible
+      await page.$eval('plot-info', e => e.show())
+
+      await expect(await page.$eval('plot-info', e => e.visible)).toBe(true)
+    })
+
+    it('should return false if the info is not visible', async () => {
+      // ensure the plot info is hidden
+      await page.$eval('plot-info', e => e.hide())
+
+      await expect(await page.$eval('plot-info', e => e.visible)).toBe(false)
+    })
+  })
+
   describe('move', () => {
     it('should move the element', async () => {
       // move to (200, 500)
