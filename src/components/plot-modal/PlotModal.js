@@ -16,8 +16,6 @@ class PlotModal extends HTMLElement {
   constructor() {
     super()
 
-    this.show = this.show.bind(this)
-    this.hide = this.hide.bind(this)
     this.onClick = this.onClick.bind(this)
   }
 
@@ -32,12 +30,12 @@ class PlotModal extends HTMLElement {
     this.removeEventListener('click', this.onClick)
   }
 
-  show() {
-    this.shadowRoot.querySelector('div.modal').classList.add('is-active')
-  }
-
-  hide() {
-    this.shadowRoot.querySelector('div.modal').classList.remove('is-active')
+  set visible(v) {
+    if (v) {
+      this.shadowRoot.querySelector('div.modal').classList.add('is-active')
+    } else {
+      this.shadowRoot.querySelector('div.modal').classList.remove('is-active')
+    }
   }
 
   get visible() {
@@ -47,7 +45,7 @@ class PlotModal extends HTMLElement {
   onClick(e) {
     e.stopPropagation()
 
-    this.hide()
+    this.visible = false
   }
 }
 

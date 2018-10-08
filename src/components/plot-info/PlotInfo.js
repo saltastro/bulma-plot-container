@@ -19,8 +19,6 @@ class PlotInfo extends HTMLElement {
     super()
 
     this._position = [0, 0]
-    this.show = this.show.bind(this)
-    this.hide = this.hide.bind(this)
   }
 
   connectedCallback() {
@@ -28,12 +26,12 @@ class PlotInfo extends HTMLElement {
     shadowRoot.appendChild(infoTemplate.content.cloneNode(true))
   }
 
-  show() {
-    this.shadowRoot.querySelector('.info').classList.remove('is-invisible')
-  }
-
-  hide() {
-    this.shadowRoot.querySelector('.info').classList.add('is-invisible')
+  set visible(v) {
+    if (v) {
+      this.shadowRoot.querySelector('.info').classList.remove('is-invisible')
+    } else {
+      this.shadowRoot.querySelector('.info').classList.add('is-invisible')
+    }
   }
 
   get visible() {
