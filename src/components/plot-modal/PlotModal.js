@@ -16,9 +16,6 @@ class PlotModal extends HTMLElement {
   constructor() {
     super()
 
-    this.show = this.show.bind(this)
-    this.hide = this.hide.bind(this)
-    this.isVisible = this.isVisible.bind(this)
     this.onClick = this.onClick.bind(this)
   }
 
@@ -26,29 +23,29 @@ class PlotModal extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: 'open' })
     shadowRoot.appendChild(modalTemplate.content.cloneNode(true))
 
-    this.addEventListener('click', this.onClick)
+    shadowRoot.querySelector('button').addEventListener('click', this.onClick)
   }
 
   disconnectedCallback() {
-    this.removeEventListener('click', this.onClick)
+    this.shadowRoot.querySelector('button').removeEventListener('click', this.onClick)
   }
 
-  show() {
-    this.shadowRoot.querySelector('div.modal').classList.add('is-active')
+  set visible(v) {
+    if (v) {
+      this.shadowRoot.querySelector('div.modal').classList.add('is-active')
+    } else {
+      this.shadowRoot.querySelector('div.modal').classList.remove('is-active')
+    }
   }
 
-  hide() {
-    this.shadowRoot.querySelector('div.modal').classList.remove('is-active')
-  }
-
-  isVisible() {
+  get visible() {
     return this.shadowRoot.querySelector('div.modal').classList.contains('is-active')
   }
 
   onClick(e) {
     e.stopPropagation()
 
-    this.hide()
+    this.visible = false
   }
 }
 

@@ -28,56 +28,71 @@ describe('PlotInfo', () => {
     })
   })
 
-  describe('show', async () => {
-    it('should remove the is-invisible class', async () => {
+  describe('visible', async () => {
+    it('should remove the is-invisible class if visible is set to true', async () => {
       // ensure the plot info initially is invisible
       const root = await findInfoRoot(page)
       await expect(await root.$eval('.info', e => e.classList.contains('is-invisible'))).toBe(true)
 
       // show the plot info
-      await page.$eval('plot-info', e => e.show())
+      await page.$eval('plot-info', e => { e.visible = true })
       await expect(await root.$eval('.info', e => e.classList.contains('is-invisible'))).toBe(false)
 
-      // calling the show method again makes no difference
-      await page.$eval('plot-info', e => e.show())
+      // setting the visibility again makes no difference
+      await page.$eval('plot-info', e => { e.visible = true })
       await expect(await root.$eval('.info', e => e.classList.contains('is-invisible'))).toBe(false)
     })
-  })
 
-  describe('hide', async () => {
-    it('should add the is-invisible class', async () => {
+    it('should add the is-invisible class if visible is set to false', async () => {
       // ensure the plot info initially is visible
       const root = await findInfoRoot(page)
-      await page.$eval('plot-info', e => e.show())
+      await page.$eval('plot-info', e => { e.visible = true })
       await expect(await root.$eval('.info', e => e.classList.contains('is-invisible'))).toBe(false)
 
       // hide the plot info
-      await page.$eval('plot-info', e => e.hide())
+      await page.$eval('plot-info', e => { e.visible = false })
       await expect(await root.$eval('.info', e => e.classList.contains('is-invisible'))).toBe(true)
 
-      // calling the hide method again makes no difference
-      await page.$eval('plot-info', e => e.hide())
+      // setting the visibility again makes no difference
+      await page.$eval('plot-info', e => { e.visible = false })
       await expect(await root.$eval('.info', e => e.classList.contains('is-invisible'))).toBe(true)
+    })
+
+    it('should be true if the info is visible', async () => {
+      // ensure the plot info is visible
+      await page.$eval('plot-info', e => { e.visible = true })
+
+      await expect(await page.$eval('plot-info', e => e.visible)).toBe(true)
+    })
+
+    it('should be false if the info is not visible', async () => {
+      // ensure the plot info is hidden
+      await page.$eval('plot-info', e => { e.visible = false })
+
+      await expect(await page.$eval('plot-info', e => e.visible)).toBe(false)
     })
   })
 
-  describe('move', () => {
-    it('should move the element', async () => {
-      // move to (200, 500)
+  describe('position', () => {
+    it('should set the position', async () => {
+      // set to (200, 500)
       const root = await findInfoRoot(page)
-      await page.$eval('plot-info', e => e.move(200, 500))
+      await page.$eval('plot-info', e => { e.position = [200, 500] })
       let x = await root.$eval('.info', e => e.style.left)
       let y = await root.$eval('.info', e => e.style.top)
       await expect(x).toBe('200px')
       await expect(y).toBe('500px')
 
-      // move to (-80, -1024)
-      await page.$eval('plot-info', e => e.move(-80, -1024))
+      // set to (-80, -1024)
+      await page.$eval('plot-info', e => { e.position = [-80, -1024] })
       x = await root.$eval('.info', e => e.style.left)
       y = await root.$eval('.info', e => e.style.top)
       await expect(x).toBe('-80px')
       await expect(y).toBe('-1024px')
+    })
 
+    it('should return the correct initial position', async () => {
+      await expect(await page.$eval('plot-info', e => e.position)).toEqual([0, 0])
     })
   })
 })

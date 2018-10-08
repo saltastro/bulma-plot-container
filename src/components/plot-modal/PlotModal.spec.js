@@ -29,60 +29,56 @@ describe('PlotModal', () => {
     })
   })
 
-  describe('show', () => {
-    it('should show the modal', async () => {
+  describe('visible', () => {
+    it('should add the is-active class if set to true', async () => {
       // ensure the plot modal initially is invisible
       const root = await findModalRoot(page)
       await expect(await root.$eval('div.modal', e => e.classList.contains('is-active'))).toBe(false)
 
       // show the plot modal
-      await page.$eval('plot-modal', e => e.show())
+      await page.$eval('plot-modal', e => { e.visible = true })
       await expect(await root.$eval('div.modal', e => e.classList.contains('is-active'))).toBe(true)
 
-      // calling the show method again makes no difference
-      await page.$eval('plot-modal', e => e.show())
+      // setting the visibility again makes no difference
+      await page.$eval('plot-modal', e => { e.visible = true })
       await expect(await root.$eval('div.modal', e => e.classList.contains('is-active'))).toBe(true)
     })
-  })
 
-  describe('hide', () => {
-    it('should hide the modal', async () => {
+    it('should hide the modal if set to false', async () => {
       // ensure the plot modal initially is visible
       const root = await findModalRoot(page)
-      await page.$eval('plot-modal', e => e.show());
+      await page.$eval('plot-modal', e => { e.visible = true })
       await expect(await root.$eval('div.modal', e => e.classList.contains('is-active'))).toBe(true)
 
       // hide the plot modal
-      await page.$eval('plot-modal', e => e.hide())
+      await page.$eval('plot-modal', e => { e.visible = false })
       await expect(await root.$eval('div.modal', e => e.classList.contains('is-active'))).toBe(false)
 
       // calling the hide method again makes no difference
-      await page.$eval('plot-modal', e => e.hide())
+      await page.$eval('plot-modal', e => { e.visible = false })
       await expect(await root.$eval('div.modal', e => e.classList.contains('is-active'))).toBe(false)
     })
-  })
 
-  describe('isVisible', () => {
-    it('should return true if the modal is visible', async () => {
-      // ensure the plot is visible
-      await page.$eval('plot-modal', e => e.show())
+    it('should be true if the modal is visible', async () => {
+      // ensure the plot modal is visible
+      await page.$eval('plot-modal', e => { e.visible = true })
 
-      await expect(await page.$eval('plot-modal', e => e.isVisible())).toBe(true)
+      await expect(await page.$eval('plot-modal', e => e.visible)).toBe(true)
     })
 
     it('should return false if the modal is not visible', async () => {
-      // ensure the plot is hidden
-      await page.$eval('plot-modal', e => e.hide())
+      // ensure the plot modal is hidden
+      await page.$eval('plot-modal', e => { e.visible = false })
 
-      await expect(await page.$eval('plot-modal', e => e.isVisible())).toBe(false)
+      await expect(await page.$eval('plot-modal', e => e.visible)).toBe(false)
     })
   })
 
   describe('interaction', () => {
     it('should close the plot modal when it is visible and its close button is clicked', async () => {
       // show the modal
-      await page.$eval('plot-modal', e => e.show())
-      await expect(await page.$eval('plot-modal', e => e.isVisible())).toBe(true)
+      await page.$eval('plot-modal', e => { e.visible = true })
+      await expect(await page.$eval('plot-modal', e => e.visible)).toBe(true)
 
       // click on the close button
       const root = await findModalRoot(page)
@@ -91,7 +87,7 @@ describe('PlotModal', () => {
       await expect(true).toBe(true)
 
       // the modal should have been closed
-      await expect(await page.$eval('plot-modal', e => e.isVisible())).toBe(false)
+      await expect(await page.$eval('plot-modal', e => e.visible)).toBe(false)
     })
   })
 })
