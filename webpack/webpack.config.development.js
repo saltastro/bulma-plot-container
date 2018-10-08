@@ -9,14 +9,21 @@ const html = ({ css, js, publicPath }) => `<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
 ${generateCSSReferences(css, publicPath)}
 ${generateJSReferences(js, publicPath)}
 </head>
 <body>
-<plot-info>
+<plot-modal>
+<div>
 <p>Hello</p>
 <p>World!</p>
-</plot-info>
+</div>
+</plot-modal>
+<button class="f">Show!</button>
+<script>
+document.querySelector('.f').addEventListener('click', () => document.querySelector('plot-modal').show())
+</script>
 </body>
 </html>`
 
