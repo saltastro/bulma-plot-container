@@ -1,3 +1,16 @@
+const infoTemplate = document.createElement('template')
+infoTemplate.innerHTML = `<style>
+  .info {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+</style>
+<div>
+  <div class="info is-invisible">
+  <slot></slot>
+</div>`
+
 class PlotInfo extends HTMLElement {
   constructor() {
     super()
@@ -7,24 +20,23 @@ class PlotInfo extends HTMLElement {
     this.move = this.move.bind(this)
   }
 
+  connectedCallback() {
+    const shadowRoot = this.attachShadow({ mode: 'open' })
+    shadowRoot.appendChild(infoTemplate.content.cloneNode(true))
+  }
+
   show() {
-    this.classList.remove('is-invisible')
+    this.shadowRoot.querySelector('.info').classList.remove('is-invisible')
   }
 
   hide() {
-    this.classList.add('is-invisible')
+    this.shadowRoot.querySelector('.info').classList.add('is-invisible')
   }
 
   move(x, y) {
-    this.style.left = `${x}px`
-    this.style.top = `${y}px`
-  }
-
-  connectedCallback() {
-    this.classList.add('is-invisible')
-    this.style.position = 'fixed'
-    this.style.top = '0'
-    this.style.left = '0'
+    const info = this.shadowRoot.querySelector('.info')
+    info.style.left = `${x}px`
+    info.style.top = `${y}px`
   }
 }
 
