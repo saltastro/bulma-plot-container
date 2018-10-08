@@ -18,9 +18,9 @@ class PlotInfo extends HTMLElement {
   constructor() {
     super()
 
+    this._position = [0, 0]
     this.show = this.show.bind(this)
     this.hide = this.hide.bind(this)
-    this.move = this.move.bind(this)
   }
 
   connectedCallback() {
@@ -40,10 +40,25 @@ class PlotInfo extends HTMLElement {
     return !this.shadowRoot.querySelector('.info').classList.contains('is-invisible')
   }
 
-  move(x, y) {
+  /**
+   * Set the plot info's position.
+   *
+   * @param p array of left and top position, as integers in pixels
+   */
+  set position(p) {
     const info = this.shadowRoot.querySelector('.info')
-    info.style.left = `${x}px`
-    info.style.top = `${y}px`
+    this._position = p
+    info.style.left = `${p[0]}px`
+    info.style.top = `${p[1]}px`
+  }
+
+  /**
+   * Get the plot info's position, as integers in pixels.
+   *
+   * @returns {any[]} position
+   */
+  get position() {
+    return this._position
   }
 }
 

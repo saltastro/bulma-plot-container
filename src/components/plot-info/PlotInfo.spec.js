@@ -77,23 +77,26 @@ describe('PlotInfo', () => {
     })
   })
 
-  describe('move', () => {
-    it('should move the element', async () => {
-      // move to (200, 500)
+  describe('position', () => {
+    it('should set the position', async () => {
+      // set to (200, 500)
       const root = await findInfoRoot(page)
-      await page.$eval('plot-info', e => e.move(200, 500))
+      await page.$eval('plot-info', e => { e.position = [200, 500] })
       let x = await root.$eval('.info', e => e.style.left)
       let y = await root.$eval('.info', e => e.style.top)
       await expect(x).toBe('200px')
       await expect(y).toBe('500px')
 
-      // move to (-80, -1024)
-      await page.$eval('plot-info', e => e.move(-80, -1024))
+      // set to (-80, -1024)
+      await page.$eval('plot-info', e => { e.position = [-80, -1024] })
       x = await root.$eval('.info', e => e.style.left)
       y = await root.$eval('.info', e => e.style.top)
       await expect(x).toBe('-80px')
       await expect(y).toBe('-1024px')
+    })
 
+    it('should return the correct initial position', async () => {
+      await expect(await page.$eval('plot-info', e => e.position)).toEqual([0, 0])
     })
   })
 })
