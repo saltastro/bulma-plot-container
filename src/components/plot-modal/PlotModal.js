@@ -1,5 +1,7 @@
+import { BULMA_CSS_URL } from '../../bulma-url'
+
 const modalTemplate = document.createElement('template')
-modalTemplate.innerHTML = `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+modalTemplate.innerHTML = `<link rel="stylesheet" href="${BULMA_CSS_URL}">
 <div>
   <div class="modal">
     <div class="modal-background"></div>
