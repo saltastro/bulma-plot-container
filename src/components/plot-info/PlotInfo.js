@@ -1,5 +1,8 @@
+import { BULMA_CSS_URL } from '../../bulma-url'
+
 const infoTemplate = document.createElement('template')
-infoTemplate.innerHTML = `<style>
+infoTemplate.innerHTML = `<link rel="stylesheet" href="${BULMA_CSS_URL}">
+<style>
   .info {
     position: fixed;
     top: 0;
