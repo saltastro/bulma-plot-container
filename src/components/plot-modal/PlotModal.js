@@ -23,11 +23,11 @@ class PlotModal extends HTMLElement {
     const shadowRoot = this.attachShadow({ mode: 'open' })
     shadowRoot.appendChild(modalTemplate.content.cloneNode(true))
 
-    this.addEventListener('click', this.onClick)
+    shadowRoot.querySelector('button').addEventListener('click', this.onClick)
   }
 
   disconnectedCallback() {
-    this.removeEventListener('click', this.onClick)
+    this.shadowRoot.querySelector('button').removeEventListener('click', this.onClick)
   }
 
   set visible(v) {
