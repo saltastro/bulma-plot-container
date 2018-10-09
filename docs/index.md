@@ -2,11 +2,19 @@
 
 ## Installation
 
-You need to load the project file with a `script` element in your web page's header:
+To use the plot container on a web page, include its JavaScript file in the page header:
 
 ```html
-<script src="/path/to/bulma-plot-container.js"></script>
+<script src="https://unpkg.com/@saltastro/bulma-plot-container"></script>
 ```
+
+If you prefer serving the JavaScript file yourself, install the package with npm:
+
+```bash
+npm install --save @saltastro/bulma-plot-container
+```
+
+The file to serve then is `node_modules/@saltastro/bulma-plot-container/dist/index.js`.
 
 ## Getting started
 
