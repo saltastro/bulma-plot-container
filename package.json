@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Web component for displaying plots with extra information",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "unpkg": "dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.config.development.js",
     "build": "webpack --config webpack/webpack.config.production.js",
