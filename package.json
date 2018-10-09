@@ -2,7 +2,7 @@
   "name": "bulma-plot-container",
   "version": "0.1.0",
   "description": "Web component for displaying plots with extra information",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack/webpack.config.development.js",
     "build": "webpack --config webpack/webpack.config.production.js",
