@@ -8,7 +8,7 @@ You should replace the link to the package file with the one for the current ver
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="dist/bulma-plot-container.js"></script>
+    <script src="https://unpkg.com/@saltastro/bulma-plot-container"></script>
     <style>
         svg.plot.small {
             width: 300px;

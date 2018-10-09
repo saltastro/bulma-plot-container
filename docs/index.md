@@ -16,7 +16,7 @@ Create a file `index.html` with the following content.
 <!DOCTYPE html>
 <html>
 <head>
-<script src="/path/to/bulma-plot-container.js"></script>
+<script src="https://unpkg.com/@saltastro/bulma-plot-container"></script>
 <style>
   .plot {
     width: 300px;
