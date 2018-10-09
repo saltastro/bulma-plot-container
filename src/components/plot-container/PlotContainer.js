@@ -1,11 +1,5 @@
 const containerTemplate = document.createElement('template')
 containerTemplate.innerHTML = `<div>
-<style>
-.container {
-    padding: 50px;
-    border: 1px solid lightgray;
-}
-</style>
   <div class="container">
     <slot></slot>
 </div>
