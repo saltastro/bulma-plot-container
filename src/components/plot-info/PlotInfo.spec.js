@@ -15,7 +15,6 @@ async function findInfoRoot(page) {
   return page.evaluateHandle((e, selector) => e.shadowRoot.querySelector(selector), plotInfo, 'div')
 }
 
-
 describe('PlotInfo', () => {
   beforeEach(async () => {
     await page.goto(`data:text/html,${testHtml(body)}`)

@@ -83,7 +83,7 @@ describe('PlotContainer', () => {
       await pageInit(false, true)
 
       // make sure the plot info is visible
-      await page.$eval('plot-container plot-info', e => { e.visible = true})
+      await page.$eval('plot-container plot-info', e => { e.visible = true })
       await expect(await page.$eval('plot-info', e => e.visible)).toBe(true)
 
       // click on the plot
