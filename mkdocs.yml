@@ -1,2 +1,5 @@
 site_name: bulma-plot-container
 theme: readthedocs
+nav:
+  - Home: index.md
+  - Example: example.md

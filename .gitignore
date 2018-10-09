@@ -60,5 +60,8 @@ typings/
 # next.js build output
 .next
 
+# Build directory
+dist/
+
 # Output directory for mkdocs build
 site/
