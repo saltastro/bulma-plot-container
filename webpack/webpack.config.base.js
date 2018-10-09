@@ -5,7 +5,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, '../dist'),
-    filename: 'bulma-plot-container.js'
+    filename: 'index.js'
   },
 
   module: {
