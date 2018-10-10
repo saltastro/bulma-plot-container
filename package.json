@@ -1,5 +1,5 @@
 {
-  "name": "bulma-plot-container",
+  "name": "@saltastro/bulma-plot-container",
   "version": "0.1.0",
   "description": "Web component for displaying plots with extra information",
   "main": "dist/index.js",
