@@ -2,8 +2,6 @@
 
 The following html displays a grid of six "plots" consisting of a circle. Clicking on each plot opens a modal with a larger version of the circle. Hovering with the mouse over a plot displays a tooltip with information about the circle's colour.
 
-You should replace the link to the package file with the one for the current version.
-
 ```html
 <!DOCTYPE html>
 <html>
